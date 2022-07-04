@@ -50,7 +50,7 @@ gulp.task("watch", () => {
 });
 
 // Server nodemon task
-gulp.task("server", () => {
+gulp.task("nodemon", () => {
 	var stream = nodemon({
 		script: "dist/server/server.js",
 		ext: ".js",
@@ -58,18 +58,10 @@ gulp.task("server", () => {
 	});
 	stream
 		.on("start", () => {
-			console.log("STARTIMG");
-			setTimeout(() => gulp.series("browsersyncReload")(), 1000);
-			// gulp.series("browsersyncReload")();
+			console.log("Starting server");
+			setTimeout(() => gulp.series("browsersyncReload")(), 1500);
 		})
-		.on("restart", () => {
-			console.log("restarted!");
-			// gulp.start("browsersyncReload");
-		})
-		.on("crash", () => {
-			console.error("Application has crashed!\n");
-			stream.emit("restart", 10); // restart the server in 10 seconds
-		});
+		.on("restart", () => console.log("restarting server"));
 });
 
 // Browser sync tasks
@@ -88,4 +80,4 @@ gulp.task("browsersyncReload", (cb) => {
 });
 
 // Default task
-gulp.task("default", gulp.series("start", "copy-images", "copy-server", "ts", "webpack", "sass", "html", "browsersyncServe", gulp.parallel("watch", "server")));
+gulp.task("default", gulp.series("start", "copy-images", "copy-server", "ts", "webpack", "sass", "html", "browsersyncServe", gulp.parallel("watch", "nodemon")));
