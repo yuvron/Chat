@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"skipLibCheck": true,
+		"module": "commonjs"
+		// "rootDir": "./src",
+		// "outDir": "./dist"
+	}
+}

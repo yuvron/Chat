@@ -1,0 +1,41 @@
+{
+	"name": "Chat",
+	"version": "1.0.0",
+	"description": "",
+	"main": "gulpfile.js",
+	"scripts": {
+		"start": "gulp"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/yuvron/Chat.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/yuvron/Chat/issues"
+	},
+	"homepage": "https://github.com/yuvron/Chat#readme",
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.30.4",
+		"@typescript-eslint/parser": "^5.30.4",
+		"eslint": "^8.19.0",
+		"eslint-plugin-import": "^2.26.0"
+	},
+	"dependencies": {
+		"browser-sync": "^2.27.10",
+		"cssnano": "^5.1.12",
+		"express": "^4.18.1",
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-nodemon": "^2.5.0",
+		"gulp-postcss": "^9.0.1",
+		"gulp-sass": "^5.1.0",
+		"gulp-typescript": "^6.0.0-alpha.1",
+		"gulp-uglify": "^3.0.2",
+		"gulp-webpack": "^1.5.0",
+		"sass": "^1.53.0",
+		"typescript": "^4.7.4"
+	}
+}
