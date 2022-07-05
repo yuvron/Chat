@@ -1,16 +1,16 @@
-const express = require("express");
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const body_parser_1 = require("body-parser");
+const fs = require("fs");
 const path = require("path");
-
-const app = express();
-
-app.get("/", (req, res) => {
-	res.send("<html><head></head<body>aoa</body></html>");
-});
-
-app.use(
-	express.static(path.join(__dirname, "../client"), (req, res, next) => {
-		next();
-	})
-);
-
+const app = (0, express_1.default)();
+app.use((0, body_parser_1.json)());
+app.use(express_1.default.static(path.join(__dirname, "../client")));
+// app.get("/", (req, res) => {
+// 	res.send("<html><head></head><body>wow!!</body></html");
+// });
 app.listen(3000, () => console.log("listening on port 3000"));
