@@ -11,7 +11,7 @@ app.use((0, body_parser_1.json)());
 app.use("*", (req, res, next) => {
     next();
 });
-app.use(express_1.default.static(path.join(__dirname, "../client")));
+app.use(express_1.default.static(path.join(__dirname, "../client"), { extensions: ["html", "css", "js"] }));
 // app.get("/", (req, res) => {
 // 	res.send("<html><head></head><body>wow!!</body></html");
 // });

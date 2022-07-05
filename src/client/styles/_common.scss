@@ -1,0 +1,15 @@
+.container {
+	@include centerAbsolute(absolute);
+	@include size(95%, 95%);
+	max-width: 350px;
+	max-height: 500px;
+	background-color: lightgray;
+	padding: 1em;
+	border-radius: 8px;
+}
+
+h1 {
+	font-size: 4rem;
+	font-weight: bold;
+	text-align: center;
+}

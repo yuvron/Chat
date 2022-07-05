@@ -20,6 +20,9 @@ gulp.task("clean", () => gulp.src("dist", { allowEmpty: true }).pipe(clean()));
 // Copy Images task
 gulp.task("images", () => gulp.src("src/client/images/*", { allowEmpty: true }).pipe(gulp.dest("dist/client/images")));
 
+// Copy data task
+gulp.task("data", () => gulp.src("src/server/data/*", { allowEmpty: true }).pipe(gulp.dest("dist/server/data")));
+
 // HTML task
 gulp.task("html", () => gulp.src("src/client/*.html").pipe(gulp.dest("dist/client")));
 
@@ -61,7 +64,8 @@ gulp.task("watch", () => {
 	gulp.watch("src/client/styles/*.scss", gulp.series("sass"));
 	gulp.watch("src/client/scripts/*.ts", gulp.series("ts-client", "webpack", "browsersyncReload"));
 	gulp.watch("src/server", gulp.series("ts-server"));
-	gulp.watch("dist/server", gulp.series("server-restart", "browsersyncReload"));
+	gulp.watch("dist/server/server.js", gulp.series("server-restart", "browsersyncReload"));
+	gulp.watch("src/server/data", gulp.series("data"));
 });
 
 // Server nodemon task
@@ -69,7 +73,7 @@ gulp.task("nodemon", () => {
 	const stream = nodemon({
 		script: "dist/server/server.js",
 		ext: ".js",
-		watch: "dist/server",
+		watch: "dist/server/server.js",
 	});
 	stream.on("start", () => setTimeout(() => gulp.series("browsersyncReload")(), 1500));
 });
@@ -89,4 +93,4 @@ gulp.task("browsersyncReload", (cb) => {
 });
 
 // Default task
-gulp.task("default", gulp.series("clean", "images", "ts-server", "server-start", "ts-client", "webpack", "sass", "html", "browsersyncServe", "watch"));
+gulp.task("default", gulp.series("clean", "images", "data", "ts-server", "server-start", "ts-client", "webpack", "sass", "html", "browsersyncServe", "watch"));

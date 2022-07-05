@@ -1,24 +1,17 @@
 @import "resets";
 @import "utilities";
+@import "common";
 
 .container {
-	@include centerAbsolute;
-	@include size(95%, 95%);
-	max-width: 350px;
-	max-height: 500px;
 	@include flex(column, stretch, stretch);
-	background-color: lightgray;
-	padding: 1em;
-	border-radius: 8px;
 }
 
 .chat {
 	height: 100%;
 	background-color: lightblue;
-
 	border: 1px solid black;
 	padding: 0.5em;
-	margin-bottom: 0.5em;
+	margin: 0.9em 0;
 	overflow: auto;
 	&::-webkit-scrollbar {
 		width: 5px;
