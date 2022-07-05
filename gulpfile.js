@@ -18,7 +18,7 @@ const tsProjectServer = ts.createProject("tsconfigServer.json");
 gulp.task("clean", () => gulp.src("dist", { allowEmpty: true }).pipe(clean()));
 
 // Copy Images task
-gulp.task("images", () => gulp.src("src/images", { allowEmpty: true }).pipe(gulp.dest("dist/images")));
+gulp.task("images", () => gulp.src("src/client/images/*", { allowEmpty: true }).pipe(gulp.dest("dist/client/images")));
 
 // HTML task
 gulp.task("html", () => gulp.src("src/client/*.html").pipe(gulp.dest("dist/client")));
@@ -56,7 +56,7 @@ gulp.task("server-restart", (cb) => {
 
 // Watch task
 gulp.task("watch", () => {
-	gulp.watch("src/images", gulp.series("images", "browsersyncReload"));
+	gulp.watch("src/client/images", gulp.series("images", "browsersyncReload"));
 	gulp.watch("src/client/*.html", gulp.series("html", "browsersyncReload"));
 	gulp.watch("src/client/styles/*.scss", gulp.series("sass"));
 	gulp.watch("src/client/scripts/*.ts", gulp.series("ts-client", "webpack", "browsersyncReload"));
@@ -66,7 +66,7 @@ gulp.task("watch", () => {
 
 // Server nodemon task
 gulp.task("nodemon", () => {
-	var stream = nodemon({
+	const stream = nodemon({
 		script: "dist/server/server.js",
 		ext: ".js",
 		watch: "dist/server",

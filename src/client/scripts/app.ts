@@ -5,7 +5,7 @@ newMessage.addEventListener("submit", (e) => {
 	e.preventDefault();
 });
 
-function scrollChatToBottom() {
+function scrollChatToBottom(): void {
 	chat.scrollTop = chat.scrollHeight;
 }
 
