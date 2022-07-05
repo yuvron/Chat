@@ -1,2 +1,51 @@
 @import "resets";
 @import "utilities";
+
+.container {
+	@include centerAbsolute;
+	@include size(350px, 500px);
+	@include flex(column, stretch, stretch);
+	background-color: lightgray;
+	padding: 0.8em;
+	font-size: 1rem;
+	border-radius: 8px;
+}
+
+.chat {
+	height: 100%;
+	background-color: lightblue;
+
+	border: 1px solid black;
+	padding: 0.5em;
+	margin-bottom: 0.5em;
+	overflow: auto;
+	&::-webkit-scrollbar {
+		width: 5px;
+		&-thumb {
+			background-color: gray;
+		}
+		&-track {
+			background-color: white;
+		}
+	}
+}
+
+.message-container {
+	@include flex(row, stretch, center);
+	height: 100px;
+}
+
+.message-area {
+	height: 100%;
+	width: 100%;
+	margin-right: 1em;
+	padding: 0.3em 0.4em;
+	border: 0;
+	border-radius: 4px;
+	resize: none;
+}
+
+.message-button {
+	color: blue;
+	padding: 0.2em 0.4em;
+}
