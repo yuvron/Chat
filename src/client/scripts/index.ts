@@ -9,7 +9,12 @@ const email = document.getElementById("email");
 if (!CookiesManager.getCookie("token")) window.location.href = "/signin";
 else email.style.color = CookiesManager.getCookie("color").value.replace("%23", "#");
 
+setEmailText();
 setEmailBackground();
+
+function setEmailText(): void {
+	email.innerHTML = CookiesManager.getCookie("email").value;
+}
 
 function setEmailBackground(): void {
 	const color = email.style.color

@@ -23,7 +23,6 @@ app.get("/signin/auth", (req: Request, res: Response) => {
 	const user = getUser(cookies.email);
 	if (user) {
 		if (authenticatePassword(user, cookies.password)) {
-			res.clearCookie("email");
 			res.clearCookie("password");
 			res.cookie("token", user.token);
 			res.cookie("color", user.color);
@@ -36,7 +35,6 @@ app.get("/signup/auth", (req: Request, res: Response) => {
 	const cookies = req.cookies;
 	if (!getUser(cookies.email)) {
 		const newUser = createUser(cookies.email, cookies.password);
-		res.clearCookie("email");
 		res.clearCookie("password");
 		res.cookie("token", newUser.token);
 		res.cookie("color", newUser.color);
