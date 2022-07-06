@@ -9,3 +9,11 @@
 #sign-in {
 	@include signForm;
 }
+
+#no-user,
+#wrong-password {
+	display: none;
+	&.block {
+		display: block;
+	}
+}

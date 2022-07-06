@@ -21,8 +21,8 @@ function userExists(): void {
 		input.classList.add("shake");
 		setTimeout(() => input.classList.remove("shake"), 400);
 	});
-	const userExists = document.getElementById("user-exists");
-	userExists.classList.add("active");
-	userExists.classList.add("shake");
-	setTimeout(() => userExists.classList.remove("shake"), 400);
+	const userExistsError = document.getElementById("user-exists");
+	userExistsError.classList.add("active");
+	userExistsError.classList.add("shake");
+	setTimeout(() => userExistsError.classList.remove("shake"), 400);
 }
