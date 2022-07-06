@@ -5,8 +5,8 @@ export class CookiesManager {
 
 	static getCookie(name: string): Cookie | undefined {
 		const cookies = document.cookie.split(";");
-		const matchingCookie = cookies.find((cookie) => cookie.trim().split("=")[0] === name);
-		return matchingCookie ? { name: matchingCookie[0], value: matchingCookie[1] } : undefined;
+		const matchingCookie = cookies.find((cookie) => cookie.trim().split("=")[0] === name).split("=");
+		return matchingCookie ? { name: matchingCookie[0].trim(), value: matchingCookie[1].trim() } : undefined;
 	}
 
 	static deleteCookie(name: string): void {

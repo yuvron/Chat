@@ -9,3 +9,10 @@
 #sign-up {
 	@include signForm;
 }
+
+#user-exists {
+	visibility: hidden;
+	&.active {
+		visibility: visible;
+	}
+}

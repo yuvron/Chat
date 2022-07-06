@@ -10,7 +10,7 @@ const app = express();
 app.use(cookieParser());
 app.use(json());
 
-app.use(express.static(path.join(__dirname, "../client"), { extensions: ["html", "css", "js"] }));
+app.use(express.static(path.join(__dirname, "../client"), { extensions: ["html"] }));
 
 app.get("/auth", (req: Request, res: Response) => {
 	const cookies = req.cookies;
@@ -34,13 +34,12 @@ app.get("/signin/auth", (req: Request, res: Response) => {
 
 app.get("/signup/auth", (req: Request, res: Response) => {
 	const cookies = req.cookies;
-	const user = getUser(cookies.email);
-	if (!user) {
+	if (!getUser(cookies.email)) {
 		const newUser = createUser(cookies.email, cookies.password);
 		res.clearCookie("email");
 		res.clearCookie("password");
 		res.cookie("token", newUser.token);
-		res.cookie("color", user.color);
+		res.cookie("color", newUser.color);
 		res.sendStatus(201);
 	} else res.sendStatus(409);
 });
