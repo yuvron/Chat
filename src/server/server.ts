@@ -1,4 +1,6 @@
 import express, { Request, Response } from "express";
+import { createServer } from "http";
+import { Server, Socket } from "socket.io";
 import { json } from "body-parser";
 import cookieParser from "cookie-parser";
 import { v4 as uuidv4 } from "uuid";
@@ -7,16 +9,13 @@ import path from "path";
 import fs from "fs";
 
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
+
 app.use(cookieParser());
 app.use(json());
 
 app.use(express.static(path.join(__dirname, "../client"), { extensions: ["html"] }));
-
-app.get("/auth", (req: Request, res: Response) => {
-	const cookies = req.cookies;
-	if (getUser(cookies.email)) res.sendStatus(200);
-	else res.sendStatus(404);
-});
 
 app.get("/signin/auth", (req: Request, res: Response) => {
 	const cookies = req.cookies;
@@ -43,7 +42,22 @@ app.get("/signup/auth", (req: Request, res: Response) => {
 });
 
 // eslint-disable-next-line no-console
-app.listen(3000, () => console.log("listening on port 3000"));
+server.listen(3000, () => console.log("listening on port 3000"));
+
+// Socket
+interface Message {
+	email: string;
+	message: string;
+}
+
+io.on("connection", (socket: Socket) => {
+	console.log("User connected");
+	socket.on("message", (message: Message) => {
+		io.emit("message", message);
+	});
+});
+
+// Data Base
 
 function generateToken(): string {
 	return uuidv4();
@@ -78,6 +92,5 @@ function createUser(email: string, password: string): User {
 }
 
 function updateDataBase(): void {
-	console.log("a");
 	fs.writeFileSync(usersPath, JSON.stringify(users));
 }
