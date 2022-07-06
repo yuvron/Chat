@@ -1,8 +1,6 @@
 import { CookiesManager } from "./cookiesManager";
 import { SocketManager, Message } from "./socketManager";
 
-const HALF_OF_RGB_SUM = 383;
-
 const chat = document.querySelector(".chat") as HTMLElement;
 const newMessage = document.getElementById("new-message") as HTMLFormElement;
 const submit = document.querySelector(".new-message-button") as HTMLButtonElement;
