@@ -10,15 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const cookiesManager_1 = require("./cookiesManager");
-const signin = document.getElementById("sign-in");
+const signup = document.getElementById("sign-up");
 cookiesManager_1.CookiesManager.deleteAllCookies();
-signin.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
+signup.addEventListener("submit", (e) => __awaiter(void 0, void 0, void 0, function* () {
     e.preventDefault();
-    const formData = new FormData(signin);
+    const formData = new FormData(signup);
     for (const [key, value] of formData.entries()) {
         cookiesManager_1.CookiesManager.addCookie(key, String(value));
     }
-    const response = yield fetch("/signin/auth");
-    if (response.status === 200)
+    const response = yield fetch("/signup/auth");
+    if (response.status === 201)
         window.location.href = "/";
 }));

@@ -14,7 +14,6 @@
 		"prefer-template": "error",
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
-		"space-before-function-paren": ["error", "never"],
 		"no-console": "warn",
 		"spaced-comment": "error",
 		"no-const-assign": "error",

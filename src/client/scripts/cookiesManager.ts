@@ -5,7 +5,7 @@ export class CookiesManager {
 
 	static getCookie(name: string): Cookie | undefined {
 		const cookies = document.cookie.split(";");
-		const matchingCookie = cookies.find((cookie) => cookie.trim().split(";")[0] === name);
+		const matchingCookie = cookies.find((cookie) => cookie.trim().split("=")[0] === name);
 		return matchingCookie ? { name: matchingCookie[0], value: matchingCookie[1] } : undefined;
 	}
 

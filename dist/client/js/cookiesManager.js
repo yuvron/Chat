@@ -7,7 +7,7 @@ class CookiesManager {
     }
     static getCookie(name) {
         const cookies = document.cookie.split(";");
-        const matchingCookie = cookies.find((cookie) => cookie.trim().split(";")[0] === name);
+        const matchingCookie = cookies.find((cookie) => cookie.trim().split("=")[0] === name);
         return matchingCookie ? { name: matchingCookie[0], value: matchingCookie[1] } : undefined;
     }
     static deleteCookie(name) {
