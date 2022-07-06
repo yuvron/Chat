@@ -81,7 +81,7 @@ gulp.task("nodemon", () => {
 // Browser sync tasks
 gulp.task("browsersyncServe", (cb) => {
 	browsersync.init({
-		proxy: "http://localhost:3000",
+		proxy: { target: "http://localhost:3000", ws: true },
 		port: 5500,
 	});
 	cb();

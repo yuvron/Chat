@@ -15,5 +15,6 @@ export class SocketManager {
 
 export interface Message {
 	email: string;
+	color: string;
 	message: string;
 }

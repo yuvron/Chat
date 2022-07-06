@@ -13,14 +13,15 @@
 }
 
 #email {
-	padding: 0.2em 0.4em;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.3em 0.5em;
 	border-radius: 4px;
 }
 
 .chat {
 	height: 100%;
-	background-color: lightblue;
-	border: 1px solid black;
+	background-color: white;
+	border: 2px solid black;
 	padding: 0.5em;
 	margin: 0.7em 0;
 	overflow: auto;
@@ -32,6 +33,18 @@
 		&-track {
 			background-color: white;
 		}
+	}
+}
+
+.message {
+	font-size: 1.2rem;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: fit-content;
+	margin-bottom: 0.4em;
+	padding: 0.3em 0.6em;
+	border-radius: 5px;
+	.message-content {
+		color: white;
 	}
 }
 

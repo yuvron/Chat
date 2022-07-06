@@ -47,6 +47,7 @@ server.listen(3000, () => console.log("listening on port 3000"));
 // Socket
 interface Message {
 	email: string;
+	color: string;
 	message: string;
 }
 
