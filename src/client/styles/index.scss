@@ -36,6 +36,14 @@
 	}
 }
 
+.message-container {
+	width: 100%;
+	@include flex(row, flex-end, center);
+	&.my-message {
+		justify-content: flex-start;
+	}
+}
+
 .message {
 	font-size: 1.2rem;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -48,12 +56,12 @@
 	}
 }
 
-.message-container {
+.new-message-container {
 	@include flex(row, stretch, center);
 	height: 100px;
 }
 
-.message-area {
+.new-message-area {
 	height: 100%;
 	width: 85%;
 	margin-right: 0.8em;
@@ -63,7 +71,7 @@
 	resize: none;
 }
 
-.message-button {
+.new-message-button {
 	width: 15%;
 	min-width: 35px;
 	min-height: 35px;

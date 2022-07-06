@@ -5,9 +5,9 @@ const HALF_OF_RGB_SUM = 383;
 
 const chat = document.querySelector(".chat") as HTMLElement;
 const newMessage = document.getElementById("new-message") as HTMLFormElement;
-const submit = document.querySelector(".message-button") as HTMLButtonElement;
+const submit = document.querySelector(".new-message-button") as HTMLButtonElement;
 const email = document.getElementById("email");
-const messageArea = document.querySelector(".message-area") as HTMLTextAreaElement;
+const messageArea = document.querySelector(".new-message-area") as HTMLTextAreaElement;
 
 const socket = new SocketManager(messageArrived);
 let user;
@@ -26,6 +26,9 @@ function validate(): void {
 }
 
 function messageArrived(message: Message): void {
+	const newMessageContainer = document.createElement("div");
+	newMessageContainer.classList.add("message-container");
+	if (user.email === message.email) newMessageContainer.classList.add("my-message");
 	const newMessage = document.createElement("div");
 	newMessage.classList.add("message");
 	const emailRow = document.createElement("p");
@@ -37,7 +40,8 @@ function messageArrived(message: Message): void {
 	contentRow.innerHTML = message.message;
 	newMessage.appendChild(emailRow);
 	newMessage.appendChild(contentRow);
-	chat.appendChild(newMessage);
+	newMessageContainer.appendChild(newMessage);
+	chat.appendChild(newMessageContainer);
 	scrollChatToBottom();
 }
 
